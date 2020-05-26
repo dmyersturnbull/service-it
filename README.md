@@ -19,7 +19,7 @@ Here's a trivial example:
 import serviceit
 def receiver(payload):
     print(payload)
-service = serviceit.create(1533, receiver)
+service = serviceit.server(1533, receiver)
 # Now it will receive JSON on 1533. For convenience:
 service.send(dict(message='hi'))
 ```
@@ -41,24 +41,14 @@ def _receiver(payload):
     inchikey = InchiToInchiKey(payload['inchi'])
     print(inchikey)
 
-service = serviceit.create(1533, _receiver)
+service = serviceit.server(1533, _receiver)
 ```
 
 **On your pip-install client side:**
 
 ```python
 import serviceit
-serviceit.send(1533, dict(inchi='InChI=1S/H2O/h1H2'))
-```
-
-Note that you _could_ import `service` from your client without issue,
-because the problematic import (from rdkit) is contained in the function.
-Assuming your above code was `serverside.py`, it would look like this:
-
-```python
-# noinspection PyUnresolvedReferences
-from serverside import service
-service.send(dict(inchi='InChI=1S/H2O/h1H2'))
+serviceit.client(1533).send(dict(inchi='InChI=1S/H2O/h1H2'))
 ```
 
 
