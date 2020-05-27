@@ -8,7 +8,7 @@
 [![Latest version on PyPi](https://badge.fury.io/py/service-it.svg)](https://pypi.org/project/service-it/)
 [![Documentation status](https://readthedocs.org/projects/service-it/badge/?version=latest&style=flat-square)](https://service-it.readthedocs.io/en/stable/)
 [![Build & test](https://github.com/dmyersturnbull/service-it/workflows/Build%20&%20test/badge.svg)](https://github.com/dmyersturnbull/service-it/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/<<apikey>>/maintainability)](https://codeclimate.com/github/dmyersturnbull/service-it/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/cb9bc2733ece01a8800b/maintainability)](https://codeclimate.com/github/dmyersturnbull/service-it/maintainability)
 [![Coverage](https://coveralls.io/repos/github/dmyersturnbull/service-it/badge.svg?branch=master)](https://coveralls.io/github/dmyersturnbull/service-it?branch=master)
 
 Turn any Python function into a service that receives JSON payloads on some port.
@@ -19,9 +19,10 @@ Here's a trivial example:
 import serviceit
 def receiver(payload):
     print(payload)
-service = serviceit.server(1533, receiver)
+server = serviceit.server(1533, receiver)
 # Now it will receive JSON on 1533. For convenience:
-service.send(dict(message='hi'))
+server.client().send(dict(message='hi'))
+print(server.bytes_processed)
 ```
 
 #### More complex example: isolate code
@@ -41,14 +42,15 @@ def _receiver(payload):
     inchikey = InchiToInchiKey(payload['inchi'])
     print(inchikey)
 
-service = serviceit.server(1533, _receiver)
+server = serviceit.server(1533, _receiver)
 ```
 
 **On your pip-install client side:**
 
 ```python
 import serviceit
-serviceit.client(1533).send(dict(inchi='InChI=1S/H2O/h1H2'))
+client = serviceit.client(1533)
+client.send(dict(inchi='InChI=1S/H2O/h1H2'))
 ```
 
 
