@@ -4,7 +4,6 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/serviceit)](https://pypi.org/project/serviceit/)
 [![Docker](https://img.shields.io/docker/v/dmyersturnbull/serviceit?color=green&label=DockerHub)](https://hub.docker.com/repository/docker/dmyersturnbull/serviceit)
-[![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/dmyersturnbull/service-it?include_prereleases&label=GitHub)](https://github.com/dmyersturnbull/service-it/releases)
 [![Latest version on PyPi](https://badge.fury.io/py/serviceit.svg)](https://pypi.org/project/serviceit/)
 [![Documentation status](https://readthedocs.org/projects/service-it/badge/?version=latest&style=flat-square)](https://service-it.readthedocs.io/en/stable/)
 [![Build & test](https://github.com/dmyersturnbull/service-it/workflows/Build%20&%20test/badge.svg)](https://github.com/dmyersturnbull/service-it/actions)
