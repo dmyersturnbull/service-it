@@ -2,6 +2,7 @@
 Main code for service-it.
 Contains the ``ServiceClient`` and ``ServiceServer`` classes.
 """
+from __future__ import annotations
 import json
 import abc
 import threading
@@ -22,10 +23,10 @@ class Payload(dict):
     """
 
     @classmethod
-    def decode(cls, bts: bytes) -> Json:
+    def decode(cls, bts: bytes) -> Payload:
         payload = bts.decode("utf8")
         try:
-            return json.loads(payload)
+            return Payload(json.loads(payload))
         except json.decoder.JSONDecodeError:
             print("Failed on payload: {}".format(payload))
             raise
@@ -162,7 +163,7 @@ class ServiceClient:
         self._payloads_sent += 1
         self._bytes_sent += len(encoded)
 
-    def receive(self) -> Json:
+    def receive(self) -> Optional[Json]:
         """
         Reads data sent back from the server.
         WARNING: This may be out-of-order.
@@ -173,8 +174,12 @@ class ServiceClient:
             The response received as a dict (Any to Any).
         """
         rec = self._socket.recv(4096)
-        return Payload.decode(rec)
+        if len(rec) == 0:
+            return None
+        else:
+            return Payload.decode(rec)
 
+    @property
     def is_open(self) -> bool:
         """
         Returns:
@@ -316,6 +321,7 @@ class ServiceServer:
         """
         return ServiceClient(self.port)
 
+    @property
     def is_open(self) -> bool:
         """
         Returns:
