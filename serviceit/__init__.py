@@ -16,7 +16,7 @@ try:
     metadata = __load(Path(__file__).parent.name)
     __status__ = "Development"
     __copyright__ = "Copyright 2020"
-    __date__ = "2020-05-27"
+    __date__ = "2020-08-24"
     __uri__ = metadata["home-page"]
     __title__ = metadata["name"]
     __summary__ = metadata["summary"]
@@ -70,3 +70,6 @@ def client(port: int) -> ServiceClient:
     if port == 0:
         raise ValueError("Cannot use port==0 (let kernel choose) when creating a client")
     return ServiceClient(port)
+
+
+__all__ = ["ServiceServer", "ServiceClient", "Responder", "server", "client"]

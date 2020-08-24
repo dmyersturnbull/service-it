@@ -1,7 +1,5 @@
 import pytest
 from datetime import datetime
-from copy import deepcopy
-import json
 
 import serviceit
 
@@ -51,7 +49,7 @@ class TestInit:
         assert then < client.last_sent
         assert then < client.last_sent
         # TODO I think this isn't guaranteed anymore. True?
-        #assert client.last_sent <= server.last_processed
+        # assert client.last_sent <= server.last_processed
         client.send(dict(yes=True))
         assert client.payloads_sent == 4
         wait(slow)

@@ -28,7 +28,7 @@ class Payload(dict):
         try:
             return Payload(json.loads(payload))
         except json.decoder.JSONDecodeError:
-            print("Failed on payload: {}".format(payload))
+            logger.error("Failed on payload: {}".format(payload))
             raise
 
     def encode(self) -> bytes:
@@ -125,6 +125,8 @@ class ServiceClient:
     @property
     def payloads_sent(self) -> int:
         """
+        Get N payloads sent.
+
         Returns:
             The number of payloads sent. Always up-to-date.
         """
@@ -133,6 +135,8 @@ class ServiceClient:
     @property
     def bytes_sent(self) -> int:
         """
+        Get N bytes sent.
+
         Returns:
             The number of bytes sent. Always up-to-date.
         """
@@ -141,8 +145,9 @@ class ServiceClient:
     @property
     def last_sent(self) -> Optional[datetime]:
         """
-        Returns:
+        Get datetime of last packet.
 
+        Returns:
             The datetime when the last packet was sent, or None if none were sent. Always up-to-date.
         """
         return self._last_sent
@@ -182,6 +187,8 @@ class ServiceClient:
     @property
     def is_open(self) -> bool:
         """
+        Return whether this socket is open.
+
         Returns:
             Whether ``self.close()`` was called.
             It's possible for the socket to be closed even if this returns ``True``.
@@ -202,7 +209,10 @@ class ServiceClient:
         self._socket.connect((self.ip, self.port))
         self._open = True
 
-    def __repr__(self):
+    def __repr__(self) -> str:
+        """
+        Returns a representation string, which has the memory address.
+        """
         return "{}@{}:{}:{}(sent={} @ {})".format(
             self.__class__.__name__,
             self.ip,
@@ -212,7 +222,10 @@ class ServiceClient:
             hex(id(self)),
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Returns a human-readable string.
+        """
         return "{}@{}:{}:{}(sent={})".format(
             self.__class__.__name__,
             self.ip,
@@ -259,6 +272,8 @@ class ServiceServer:
     @property
     def started_at(self) -> datetime:
         """
+        Get when the server started.
+
         Returns:
             The datetime the server was created.
         """
@@ -267,6 +282,8 @@ class ServiceServer:
     @property
     def last_received(self) -> Optional[datetime]:
         """
+        Get when the last packet was received.
+
         Returns:
             The datetime of the last payload received and retrieved by polling, or None if no payloads were received.
             This value is not guaranteed to be up-to-date, since the statistic lives on another thread.
@@ -276,6 +293,8 @@ class ServiceServer:
     @property
     def last_processed(self) -> Optional[datetime]:
         """
+        Get when the last package finished processing.
+
         Returns:
             The datetime of the last payload for which processing finished, or None if no payloads were processed.
             This value is not guaranteed to be up-to-date, since the statistic lives on another thread.
@@ -285,6 +304,8 @@ class ServiceServer:
     @property
     def payloads_received(self) -> int:
         """
+        Get the total N payloads received.
+
         Returns:
             The number of JSON payloads received and retrieved by polling.
             This number is not guaranteed to be up-to-date, since the statistic lives on another thread.
@@ -294,6 +315,8 @@ class ServiceServer:
     @property
     def payloads_processed(self) -> int:
         """
+        Get the total N payloads processed.
+
         Returns:
             The number of JSON payloads for which processing finished.
             This number is not guaranteed to be up-to-date, since the statistic lives on another thread.
@@ -303,6 +326,8 @@ class ServiceServer:
     @property
     def bytes_processed(self) -> int:
         """
+        Get the total N bytes processed.
+
         Returns:
             The number of bytes processed.
             This number is not guaranteed to be up-to-date, since the statistic lives on another thread.
@@ -324,6 +349,8 @@ class ServiceServer:
     @property
     def is_open(self) -> bool:
         """
+        Returns whether the socket is open.
+
         Returns:
             In theory, whether this server is accepting connections.
             Specifically, whether ``self.close()`` was called.
@@ -341,7 +368,10 @@ class ServiceServer:
         # TODO
         # self._server_thread.
 
-    def __repr__(self):
+    def __repr__(self) -> str:
+        """
+        Returns a representation string, which has the memory address.
+        """
         return "{}@{}:{}:{}(started={},processed={} @ {})".format(
             self.__class__.__name__,
             self.ip,
@@ -352,7 +382,10 @@ class ServiceServer:
             hex(id(self)),
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Returns a human-readable string.
+        """
         return "{}@{}:{}:{}(started={},processed={})".format(
             self.__class__.__name__,
             self.ip,

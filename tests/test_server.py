@@ -24,7 +24,7 @@ class TestService:
         while server.bytes_processed == 0:
             pass
         assert str(data) == str([dict(msg="hi")])
-        
+
     def test_close_client(self):
         data = []
 
@@ -60,7 +60,7 @@ class TestService:
         assert repr(server).startswith('ServiceServer') and '127.0.0.1' in repr(server)
         assert str(client).startswith('ServiceClient') and 'localhost' in str(client)
         assert repr(client).startswith('ServiceClient') and 'localhost' in repr(client)
-    
+
 
     def test_receive_none(self):
         slow = int(1e6)
@@ -74,7 +74,7 @@ class TestService:
         client.send(dict(msg="hi"))
         wait(slow)
         assert client.receive() is None
-    
+
     """
     # TODO
     def test_receive_some(self):
