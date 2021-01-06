@@ -2,7 +2,7 @@
 description-file = "README.md"
 
 [build-system]
-requires = ["poetry>=1,<2", "coverage[toml]>=5,<6"]
+requires = ["poetry>=1,<2", "coverage[toml]>=5,<6", "virtualenv>=20.2"]
 build-backend = "poetry.masonry.api"
 
 
@@ -12,7 +12,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "serviceit"
-version = "0.1.1"
+version = "0.2.0"
 description = "Turn any Python function into a service that receives JSON payloads on some port."
 keywords = ["socket", "json", "service", "server"]
 authors = ["Douglas Myers-Turnbull"]
@@ -27,7 +27,6 @@ classifiers = [
     "Natural Language :: English",
     "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
 	"Intended Audience :: Developers",
@@ -51,35 +50,32 @@ Download = "https://pypi.org/project/serviceit/"
 #########################################################################################
 
 [tool.poetry.dependencies]
-python                   = ">=3.7, <4"
-tomlkit                  = ">=0.5, <1.0"
-importlib-metadata       = "^1"
+python                   = ">=3.8, <4"
+tomlkit                  = ">=0.7, <1.0"
 typer                    = ">=0.3, <1.0"
 
 [tool.poetry.dev-dependencies]
-pre-commit               = "^2"
-pytest                   = "^6"
-coverage                 = {extras = ["toml"], version = "^5"}
-pytest-cov               = "^2"
-sphinx                   = "^3"
-sphinx-autoapi           = "^1"
+pre-commit               = ">=2.9, <3.0"
+pre-commit-hooks         = ">=3.4, <4.0"
+bandit                   = ">=1.7, <2.0"
+pytest                   = ">=6.2, <7.0"
+coverage                 = {extras = ["toml"], version = ">=5.3, <6.0"}
+pytest-cov               = ">=2.10, <3.0"
+sphinx                   = ">=3.4, <4.0"
+sphinx-autoapi           = ">=1.5, <2.0"
 sphinx-rtd-theme         = ">=0.5, <1.0"
-flake8                   = "^3"
-flake8-docstrings        = "^1"
-black                    = "=19.10b0"
-isort                    = "^5"
-sphinx-autodoc-typehints = "^1"
-flake8-bugbear           = "^20"
-coveralls                = "^2"
-tomlkit                  = ">=0.5, <1.0"
+flake8                   = ">=3.8, <4.0"
+flake8-docstrings        = ">=1.5, <2.0"
+flake8-bugbear           = ">=20"
 
 [tool.poetry.extras]
-dev       = [
-            "pre-commit", "pytest", "coverage", "pytest-cov",
-            "sphinx", "sphinx-autodoc-typehints", "sphinx-autoapi",
-            "flake8", "flake8-docstrings",
-            "black", "isort",
-            "flake8-bugbear"
+dev = [
+        "pre-commit", "pre-commit-hooks",
+        "pytest", "coverage", "pytest-cov",
+        "sphinx", "sphinx-autoapi",
+        "flake8", "flake8-docstrings",
+        "black",
+        "bandit", "flake8-bugbear"
 ]
 
 
@@ -141,19 +137,8 @@ show_missing = true
 
 [tool.black]
 line-length = 100
-target-version = ["py37", "py38"]
-
-[tool.isort]
-line_length = 100
+target-version = ["py38"]
 
 [mypy]
 check_untyped_defs = true
 strict_optional = true
-
-[pycodestyle]
-max-line-length = 100
-statistics = true
-
-[pydocstyle]
-# 212 and 213 contradict; 203 and 204 contradict; D302 is not relevant in Py3
-ignore = ["D203", "D212", "D302"]

@@ -5,17 +5,18 @@ Metadata for service-it.
 from pathlib import Path
 import logging
 
-# importlib.metadata is compat with Python 3.8 only
-from importlib_metadata import PackageNotFoundError, metadata as __load
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import metadata as __load
 
 from serviceit.server import ServiceServer, ServiceClient, Responder
 
-logger = logging.getLogger("serviceit")
-
+pkg = Path(__file__).absolute().parent.name
+logger = logging.getLogger(pkg)
+_metadata = None
 try:
-    metadata = __load(Path(__file__).parent.name)
+    metadata = __load(Path(__file__).absolute().parent.name)
     __status__ = "Development"
-    __copyright__ = "Copyright 2020"
+    __copyright__ = "Copyright 2020–2021"
     __date__ = "2020-08-24"
     __uri__ = metadata["home-page"]
     __title__ = metadata["name"]
