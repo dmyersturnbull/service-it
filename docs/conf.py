@@ -6,6 +6,7 @@ https://www.sphinx-doc.org/en/master/usage/configuration.html
 """
 
 from pathlib import Path
+from typing import Any
 
 import tomlkit
 
@@ -14,15 +15,15 @@ toml = tomlkit.loads((root / "pyproject.toml").read_text(encoding="utf8"))
 
 
 def find(key: str) -> str:
-    return str(toml["tool"]["poetry"][key])
+    return toml["tool"]["poetry"][key]
 
 
 language = None
-project = find("name")
-version = find("version")
-release = find("version")
+project = str(find("name"))
+version = str(find("version"))
+release = version
 author = ", ".join(find("authors"))
-copyright = "Copyright (2020–2021)"
+copyright = f"2020–2021 {author}"
 
 
 extensions = ["autoapi.extension", "sphinx.ext.napoleon", "sphinx_rtd_theme"]
