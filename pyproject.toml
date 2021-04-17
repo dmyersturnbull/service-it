@@ -12,7 +12,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "serviceit"
-version = "0.2.1"
+version = "0.2.0"
 description = "Turn any Python function into a service that receives JSON payloads on some port."
 keywords = ["socket", "json", "service", "server"]
 authors = ["Douglas Myers-Turnbull"]
@@ -33,11 +33,6 @@ classifiers = [
     "Operating System :: OS Independent",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
-include = [
-    "README.md",
-    "LICENSE.txt",
-    "CHANGELOG.md"
-]
 
 [tool.poetry.urls]
 CI = "https://github.com/dmyersturnbull/service-it/actions"
@@ -55,24 +50,20 @@ tomlkit                  = ">=0.7, <1.0"
 typer                    = ">=0.3, <1.0"
 
 [tool.poetry.dev-dependencies]
-pre-commit               = ">=2.9, <3.0"
+pre-commit               = ">=2.11, <3.0"
 pre-commit-hooks         = ">=3.4, <4.0"
 bandit                   = ">=1.7, <2.0"
 pytest                   = ">=6.2, <7.0"
 coverage                 = {extras = ["toml"], version = ">=5.3, <6.0"}
 pytest-cov               = ">=2.10, <3.0"
-sphinx                   = ">=3.4, <4.0"
-sphinx-autoapi           = ">=1.5, <2.0"
-sphinx-rtd-theme         = ">=0.5, <1.0"
 flake8                   = ">=3.8, <4.0"
 flake8-docstrings        = ">=1.5, <2.0"
-flake8-bugbear           = ">=20"
+flake8-bugbear           = ">=21"
 
 [tool.poetry.extras]
 dev = [
         "pre-commit", "pre-commit-hooks",
         "pytest", "coverage", "pytest-cov",
-        "sphinx", "sphinx-autoapi",
         "flake8", "flake8-docstrings",
         "black",
         "bandit", "flake8-bugbear"
@@ -89,7 +80,7 @@ align    = true
 [tool.tyrannosaurus.sources]
 status             = "'Development'"
 date               = "${today}"
-copyright          = "'Copyright 2020'"
+copyright          = "'Copyright 2020–2021'"
 version            = "tool.poetry.version"
 release            = "tool.poetry.version"
 pyversions         = "tool.poetry.dependencies"
@@ -138,7 +129,3 @@ show_missing = true
 [tool.black]
 line-length = 100
 target-version = ["py38"]
-
-[mypy]
-check_untyped_defs = true
-strict_optional = true

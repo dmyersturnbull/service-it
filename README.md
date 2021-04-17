@@ -3,14 +3,13 @@
 [![Version status](https://img.shields.io/pypi/status/serviceit?label=status)](https://pypi.org/project/serviceit)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python version compatibility](https://img.shields.io/pypi/pyversions/serviceit?label=Python)](https://pypi.org/project/serviceit)
-[![Version on Docker Hub](https://img.shields.io/docker/v/dmyersturnbull/service-it?color=green&label=Docker%20Hub)](https://hub.docker.com/repository/docker/dmyersturnbull/service-it)
-[![Version on Github](https://img.shields.io/github/v/release/dmyersturnbull/service-it?include_prereleases&label=GitHub)](https://github.com/dmyersturnbull/service-it/releases)
+[![Version on GitHub](https://img.shields.io/github/v/release/dmyersturnbull/service-it?include_prereleases&label=GitHub)](https://github.com/dmyersturnbull/service-it/releases)
 [![Version on PyPi](https://img.shields.io/pypi/v/serviceit?label=PyPi)](https://pypi.org/project/serviceit)  
 [![Build (Actions)](https://img.shields.io/github/workflow/status/dmyersturnbull/service-it/Build%20&%20test?label=Tests)](https://github.com/dmyersturnbull/service-it/actions)
-[![Documentation status](https://readthedocs.org/projects/service-it/badge)](https://service-it.readthedocs.io/en/stable)
 [![Coverage (coveralls)](https://coveralls.io/repos/github/dmyersturnbull/service-it/badge.svg?branch=main&service=github)](https://coveralls.io/github/dmyersturnbull/service-it?branch=main)
 [![Maintainability (Code Climate)](https://api.codeclimate.com/v1/badges/6b804351b6ba5e7694af/maintainability)](https://codeclimate.com/github/dmyersturnbull/service-it/maintainability)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dmyersturnbull/service-it/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/dmyersturnbull/service-it/?branch=main)
+[![Created with Tyrannosaurus](https://img.shields.io/badge/Created_with-Tyrannosaurus-0000ff.svg)](https://github.com/dmyersturnbull/mandos)
 
 
 Turn any Python function into a service that receives JSON payloads on some port.
