@@ -12,7 +12,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "serviceit"
-version = "0.2.0"
+version = "0.2.1"
 description = "Turn any Python function into a service that receives JSON payloads on some port."
 keywords = ["socket", "json", "service", "server"]
 authors = ["Douglas Myers-Turnbull"]
@@ -45,29 +45,25 @@ Download = "https://pypi.org/project/serviceit/"
 #########################################################################################
 
 [tool.poetry.dependencies]
-python                   = ">=3.8, <4"
+python                   = "^3.8"
 tomlkit                  = ">=0.7, <1.0"
 typer                    = ">=0.3, <1.0"
 
 [tool.poetry.dev-dependencies]
-pre-commit               = ">=2.11, <3.0"
-pre-commit-hooks         = ">=3.4, <4.0"
-bandit                   = ">=1.7, <2.0"
-pytest                   = ">=6.2, <7.0"
-coverage                 = {extras = ["toml"], version = ">=5.3, <6.0"}
-pytest-cov               = ">=2.10, <3.0"
-flake8                   = ">=3.8, <4.0"
-flake8-docstrings        = ">=1.5, <2.0"
+black                    = "==21.5b2"
+pre-commit               = "^2.13"
+pre-commit-hooks         = "^4.0"
+bandit                   = "^1.7"
+pytest                   = "^6.2"
+coverage                 = {extras = ["toml"], version = "^5.5"}
+pytest-cov               = "^2.11"
+flake8                   = "^3.9"
+flake8-docstrings        = "^1.5"
 flake8-bugbear           = ">=21"
-
-[tool.poetry.extras]
-dev = [
-        "pre-commit", "pre-commit-hooks",
-        "pytest", "coverage", "pytest-cov",
-        "flake8", "flake8-docstrings",
-        "black",
-        "bandit", "flake8-bugbear"
-]
+sphinx                   = "^4.0"
+sphinx-copybutton        = ">=0.3, <1.0"
+sphinx-autoapi           = "^1.5"
+sphinx-rtd-theme         = ">=0.5, <1.0"
 
 
 #########################################################################################
@@ -105,12 +101,20 @@ license      = true
 authors      = true
 github       = true
 travis       = true
-dockerfile   = true
 readme       = true
 changelog    = true
-citation     = true
-codemeta     = true
 environment  = false
+
+
+#########################################################################################
+# Testing
+#########################################################################################
+
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)8s] %(name)s: %(message)s (%(filename)s:%(lineno)s)"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
 
 
 #########################################################################################

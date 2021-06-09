@@ -3,6 +3,11 @@
 Adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 and [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.2.1] - 2021-06-08
+
+### Fixed
+- Updated build
+
 ## [0.2.0] - 2021-04-17
 
 ### Removed
