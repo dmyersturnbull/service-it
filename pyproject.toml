@@ -51,7 +51,7 @@ typer                    = ">=0.3, <1.0"
 
 [tool.poetry.dev-dependencies]
 black                    = "==21.5b2"
-pre-commit               = "^2.13"
+pre-commit               = "^2.18"
 pre-commit-hooks         = "^4.0"
 bandit                   = "^1.7"
 pytest                   = "^6.2"
